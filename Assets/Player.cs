@@ -7,15 +7,15 @@ public class Player : MonoBehaviour
 
     [Tooltip("In ms^-1")]
     [SerializeField]
-    float speed = 20.0f;
+    float speed = 18.0f;
 
     [Tooltip("In meters")]
     [SerializeField]
-    float xRange = 7.0f;
+    float xRange = 5.0f;
 
     [Tooltip("In meters")]
     [SerializeField]
-    float yRange = 4.75f;
+    float yRange = 4.0f;
 
     [SerializeField]
     float positionPitchFactor = -5.0f;
