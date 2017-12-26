@@ -24,10 +24,10 @@ public class Player : MonoBehaviour
     float controlPitchFactor = -20.0f;
 
     [SerializeField]
-	float positionYawFactor = 5.0f;
+    float positionYawFactor = 5.0f;
 
-	[SerializeField]
-	float controlRollFactor = -20.0f;
+    [SerializeField]
+    float controlRollFactor = -20.0f;
 
     #endregion
 
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     #endregion
 
-	#region Unity Hooks
+    #region Unity Hooks
 
     // Update is called once per frame
     void Update()
@@ -48,7 +48,33 @@ public class Player : MonoBehaviour
         ProcessRotation();
     }
 
-	#endregion
+    void OnCollisionEnter(Collision collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "Enemy":
+                print("Collided with enemy");
+                break;
+            default:
+                print("Player collided with something!");
+                break;
+        }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        switch (collider.gameObject.tag)
+        {
+            case "Enemy":
+                print("Player triggered an enemy");
+                break;
+            default:
+                print("Player triggered something");
+                break;
+        }
+    }
+
+    #endregion
 
     #region Private Methods
 
@@ -74,15 +100,15 @@ public class Player : MonoBehaviour
 
     private void ProcessRotation()
     {
-		// Process pitch
-		float pitchFromPosition = transform.localPosition.y * positionPitchFactor;
-		float pitchFromThrow = yThrow * controlPitchFactor;
+        // Process pitch
+        float pitchFromPosition = transform.localPosition.y * positionPitchFactor;
+        float pitchFromThrow = yThrow * controlPitchFactor;
         float pitch = pitchFromPosition + pitchFromThrow;
 
-		// Process yaw
+        // Process yaw
         float yaw = transform.localPosition.x * positionYawFactor;
 
-		// Process roll
+        // Process roll
         float roll = xThrow * controlRollFactor;
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);

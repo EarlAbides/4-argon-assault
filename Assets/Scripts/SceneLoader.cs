@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MusicPlayer : MonoBehaviour
-{	
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+public class SceneLoader : MonoBehaviour
+{
     // Use this for initialization
     void Start()
     {
