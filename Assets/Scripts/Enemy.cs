@@ -7,6 +7,13 @@ public class Enemy : MonoBehaviour
 
 	[SerializeField] GameObject deathFX;
 	[SerializeField] Transform parent;
+	[SerializeField] int pointsPerHit = 15;
+
+	#endregion
+
+	#region Private Members
+
+	ScoreBoard scoreBoard;
 
 	#endregion
 
@@ -14,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+		scoreBoard = FindObjectOfType<ScoreBoard>();
         AddNonTriggerBoxCollider();
     }
 
@@ -36,6 +44,9 @@ public class Enemy : MonoBehaviour
     {
 		var fx = Instantiate(deathFX, transform.position, Quaternion.identity);
 		fx.transform.parent = parent;
+
+		scoreBoard.ScoreHit(pointsPerHit);
+
         Destroy(gameObject);
     }
 

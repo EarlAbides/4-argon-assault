@@ -18,6 +18,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float yRange = 4.0f;
 
+    [Tooltip("Points scored for being alive")]
+    [SerializeField]
+    int pointsPerSecond = 1;
+
+    [Tooltip("In seconds")]
+    [SerializeField]
+    int scoreUpdateInterval = 5;
+
     [Header("Screen Position Based")]
     [SerializeField]
     float positionPitchFactor = -5.0f;
@@ -39,10 +47,17 @@ public class PlayerController : MonoBehaviour
     private float xThrow;
     private float yThrow;
     private bool playerDying;
+    private ScoreBoard scoreBoard;
+    private float lastScoreUpdate = 0.0f;
 
     #endregion
 
     #region Unity Hooks
+
+    void Start()
+    {
+        scoreBoard = FindObjectOfType<ScoreBoard>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,6 +67,7 @@ public class PlayerController : MonoBehaviour
             CaptureInput();
             ProcessTranslation();
             ProcessRotation();
+            ScorePoints();
         }
     }
 
@@ -104,5 +120,13 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 
+    private void ScorePoints()
+    {
+        if (Time.timeSinceLevelLoad - lastScoreUpdate >= 5)
+        {
+            scoreBoard.ScorePoints(pointsPerSecond * 5);
+            lastScoreUpdate = Time.timeSinceLevelLoad;
+        }
+    }
     #endregion
 }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 198933597823852592}
   - component: {fileID: 199492096935663196}
   - component: {fileID: 82626322286563184}
+  - component: {fileID: 114300962609690396}
   m_Layer: 0
   m_Name: Enemy Death FX
   m_TagString: Untagged
@@ -122,6 +123,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114300962609690396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605785753364328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f7b48fa877d48f0ba7dde3fe3425c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198933597823852592
 ParticleSystem:
   m_ObjectHideFlags: 1
