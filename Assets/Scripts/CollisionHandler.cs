@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-	# region DEsigner Variables
+	# region Designer Variables
 
     [Tooltip("In Seconds")] [SerializeField] float levelLoadDelay = 1.0f;
     [Tooltip("Death particle effect")] [SerializeField] GameObject deathFX;
@@ -15,16 +15,6 @@ public class CollisionHandler : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        switch (collider.gameObject.tag)
-        {
-            case "Enemy":
-                print("Player triggered an enemy");
-                break;
-            default:
-                print("Player triggered something");
-                break;
-        }
-
         StartDeathSequence();
     }
 
