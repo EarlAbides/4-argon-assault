@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     #region Designer Variables
 
+    [Header("General")]
     [Tooltip("In ms^-1")]
     [SerializeField]
-    float speed = 18.0f;
+    float controlSpeed = 18.0f;
 
     [Tooltip("In meters")]
     [SerializeField]
@@ -17,14 +18,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     float yRange = 4.0f;
 
+    [Header("Screen Position Based")]
     [SerializeField]
     float positionPitchFactor = -5.0f;
 
     [SerializeField]
-    float controlPitchFactor = -20.0f;
-
-    [SerializeField]
     float positionYawFactor = 5.0f;
+
+    [Header("Control Position Based")]
+    [SerializeField]
+    float controlPitchFactor = -20.0f;
 
     [SerializeField]
     float controlRollFactor = -20.0f;
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
 
     private float xThrow;
     private float yThrow;
+    private bool playerDying;
 
     #endregion
 
@@ -43,35 +47,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CaptureInput();
-        ProcessTranslation();
-        ProcessRotation();
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        switch (collision.gameObject.tag)
+        if (!playerDying)
         {
-            case "Enemy":
-                print("Collided with enemy");
-                break;
-            default:
-                print("Player collided with something!");
-                break;
+            CaptureInput();
+            ProcessTranslation();
+            ProcessRotation();
         }
     }
 
-    void OnTriggerEnter(Collider collider)
+    #endregion
+
+    #region Player Hooks
+
+    void OnPlayerDeath()
     {
-        switch (collider.gameObject.tag)
-        {
-            case "Enemy":
-                print("Player triggered an enemy");
-                break;
-            default:
-                print("Player triggered something");
-                break;
-        }
+        playerDying = true;
     }
 
     #endregion
@@ -87,11 +77,11 @@ public class Player : MonoBehaviour
     private void ProcessTranslation()
     {
         // Calculate X-Axis movement
-        float xOffsetThisFrame = Time.deltaTime * xThrow * speed;
+        float xOffsetThisFrame = Time.deltaTime * xThrow * controlSpeed;
         float newXPos = Mathf.Clamp(transform.localPosition.x + xOffsetThisFrame, -xRange, xRange);
 
         // Calculate Y-Axis movement
-        float yOffsetThisFrame = Time.deltaTime * yThrow * speed;
+        float yOffsetThisFrame = Time.deltaTime * yThrow * controlSpeed;
         float newYPos = Mathf.Clamp(transform.localPosition.y + yOffsetThisFrame, -yRange, yRange);
 
         // Set new local position
