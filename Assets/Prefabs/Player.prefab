@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 198456660625366640}
   - component: {fileID: 199677578544838458}
   m_Layer: 0
-  m_Name: Bullets
+  m_Name: Guns Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 198895368078907482}
   - component: {fileID: 199816255021027634}
   m_Layer: 0
-  m_Name: Bullets (1)
+  m_Name: Guns Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,6 +314,11 @@ MonoBehaviour:
   controlSpeed: 18
   xRange: 6
   yRange: 4.5
+  pointsPerSecond: 1
+  scoreUpdateInterval: 5
+  guns:
+  - {fileID: 1836976539163186}
+  - {fileID: 1493844712786964}
   positionPitchFactor: -5
   positionYawFactor: 5
   controlPitchFactor: -20
@@ -3739,7 +3744,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 56991507
+  randomSeed: -1717050846
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6087,9 +6092,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -6233,7 +6238,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -7100,7 +7105,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1616792064
+  randomSeed: -148489240
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9448,9 +9453,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -9594,7 +9599,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:

@@ -4,10 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-	# region Designer Variables
+	# region Designer Properties
 
-    [Tooltip("In Seconds")] [SerializeField] float levelLoadDelay = 1.0f;
-    [Tooltip("Death particle effect")] [SerializeField] GameObject deathFX;
+    [Tooltip("In Seconds")]
+    [SerializeField] float levelLoadDelay = 1.0f;
+    
+    [Tooltip("Death particle effect")]
+    [SerializeField] GameObject deathFX;
 
 	#endregion
 

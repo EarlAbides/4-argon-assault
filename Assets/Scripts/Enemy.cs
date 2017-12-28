@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 	[SerializeField] GameObject deathFX;
 	[SerializeField] Transform parent;
 	[SerializeField] int pointsPerHit = 15;
+	[SerializeField] int hits = 10;
 
 	#endregion
 
@@ -27,7 +28,12 @@ public class Enemy : MonoBehaviour
 
     void OnParticleCollision(GameObject other)
     {
-        BlowUp();
+        scoreBoard.ScoreHit(pointsPerHit);
+        hits--;
+        if (hits <= 0)
+        {
+            BlowUp();
+        }
     }
 
     #endregion
@@ -45,7 +51,6 @@ public class Enemy : MonoBehaviour
 		var fx = Instantiate(deathFX, transform.position, Quaternion.identity);
 		fx.transform.parent = parent;
 
-		scoreBoard.ScoreHit(pointsPerHit);
 
         Destroy(gameObject);
     }

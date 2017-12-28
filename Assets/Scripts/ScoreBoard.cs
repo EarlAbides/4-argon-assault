@@ -3,15 +3,24 @@ using UnityEngine.UI;
 
 public class ScoreBoard : MonoBehaviour
 {
+	#region Member Variables
+
     int score = 0;
     Text scoreText;
 
-    // Use this for initialization
+	#endregion
+	
+	#region Unity Hooks
+
     void Start()
     {
         scoreText = gameObject.GetComponent<Text>();
         scoreText.text = score.ToString();
     }
+
+	#endregion
+
+	#region Public Methods
 
 	public void ScoreHit(int points)
 	{
@@ -24,4 +33,6 @@ public class ScoreBoard : MonoBehaviour
 		score += points;
 		scoreText.text = score.ToString();
 	}
+
+	#endregion
 }

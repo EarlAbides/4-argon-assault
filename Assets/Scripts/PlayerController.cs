@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Designer Variables
+    #region Designer Properties
 
     [Header("General")]
     [Tooltip("In ms^-1")]
@@ -26,19 +27,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     int scoreUpdateInterval = 5;
 
+    [SerializeField] GameObject[] guns;
+
     [Header("Screen Position Based")]
     [SerializeField]
     float positionPitchFactor = -5.0f;
-
-    [SerializeField]
-    float positionYawFactor = 5.0f;
+    [SerializeField] float positionYawFactor = 5.0f;
 
     [Header("Control Position Based")]
     [SerializeField]
     float controlPitchFactor = -20.0f;
-
-    [SerializeField]
-    float controlRollFactor = -20.0f;
+    [SerializeField] float controlRollFactor = -20.0f;
 
     #endregion
 
@@ -67,6 +66,7 @@ public class PlayerController : MonoBehaviour
             CaptureInput();
             ProcessTranslation();
             ProcessRotation();
+            ProcessFiring();
             ScorePoints();
         }
     }
@@ -120,11 +120,31 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 
+    private void ProcessFiring()
+    {
+            if (CrossPlatformInputManager.GetButton("Fire"))
+            {
+                SetGunsActive(true);
+            }
+            else
+            {
+                SetGunsActive(false);
+            }
+    }
+
+    private void SetGunsActive(bool active)
+    {
+        foreach (var gun in guns)
+        {
+            gun.SetActive(active);
+        }
+    }
+
     private void ScorePoints()
     {
-        if (Time.timeSinceLevelLoad - lastScoreUpdate >= 5)
+        if (Time.timeSinceLevelLoad - lastScoreUpdate >= scoreUpdateInterval)
         {
-            scoreBoard.ScorePoints(pointsPerSecond * 5);
+            scoreBoard.ScorePoints(pointsPerSecond * scoreUpdateInterval);
             lastScoreUpdate = Time.timeSinceLevelLoad;
         }
     }

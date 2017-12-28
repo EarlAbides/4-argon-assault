@@ -184,6 +184,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &14837858 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1836976539163186, guid: ca9edb269a8524b0c859231d074f1f21,
+    type: 2}
+  m_PrefabInternal: {fileID: 566728979}
 --- !u!1001 &197553264
 Prefab:
   m_ObjectHideFlags: 0
@@ -331,6 +336,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1163488986}
     m_Modifications:
+    - target: {fileID: 114637619026017710, guid: ca9edb269a8524b0c859231d074f1f21,
+        type: 2}
+      propertyPath: guns.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4795557960398312, guid: ca9edb269a8524b0c859231d074f1f21, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -365,11 +375,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1836976539163186, guid: ca9edb269a8524b0c859231d074f1f21, type: 2}
       propertyPath: m_Name
-      value: Bullets Right
+      value: Guns Right
       objectReference: {fileID: 0}
     - target: {fileID: 1493844712786964, guid: ca9edb269a8524b0c859231d074f1f21, type: 2}
       propertyPath: m_Name
-      value: Bullets Left
+      value: Guns Left
       objectReference: {fileID: 0}
     - target: {fileID: 198895368078907482, guid: ca9edb269a8524b0c859231d074f1f21,
         type: 2}
@@ -411,6 +421,16 @@ Prefab:
       propertyPath: CollisionModule.collisionMessages
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114637619026017710, guid: ca9edb269a8524b0c859231d074f1f21,
+        type: 2}
+      propertyPath: guns.Array.data[0]
+      value: 
+      objectReference: {fileID: 14837858}
+    - target: {fileID: 114637619026017710, guid: ca9edb269a8524b0c859231d074f1f21,
+        type: 2}
+      propertyPath: guns.Array.data[1]
+      value: 
+      objectReference: {fileID: 1288768141}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca9edb269a8524b0c859231d074f1f21, type: 2}
   m_IsPrefabParent: 0
@@ -999,6 +1019,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4232234352724882, guid: e14d375f5a36551479fc2f172353b1ba,
     type: 2}
   m_PrefabInternal: {fileID: 1919631406}
+--- !u!1 &1288768141 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1493844712786964, guid: ca9edb269a8524b0c859231d074f1f21,
+    type: 2}
+  m_PrefabInternal: {fileID: 566728979}
 --- !u!1 &1293068163 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1090395654553690, guid: e14d375f5a36551479fc2f172353b1ba,
