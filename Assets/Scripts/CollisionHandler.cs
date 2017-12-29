@@ -4,26 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-	# region Designer Properties
+    #region Designer Properties
 
     [Tooltip("In Seconds")]
-    [SerializeField] float levelLoadDelay = 1.0f;
-    
+    [SerializeField]
+    float levelLoadDelay = 1.0f;
+
     [Tooltip("Death particle effect")]
-    [SerializeField] GameObject deathFX;
+    [SerializeField]
+    GameObject deathFX;
 
-	#endregion
+    #endregion
 
-	#region Unity Hooks
+    #region Unity Hooks
 
     void OnTriggerEnter(Collider collider)
     {
-        StartDeathSequence();
+        if (collider.tag != "Respawn")
+        {
+            StartDeathSequence();
+        }
     }
 
-	#endregion
+    #endregion
 
-	#region Private Methods
+    #region Private Methods
 
     private void StartDeathSequence()
     {
@@ -44,5 +49,5 @@ public class CollisionHandler : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-	#endregion
+    #endregion
 }
